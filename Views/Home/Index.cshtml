@@ -3,6 +3,24 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Bienvenido a :</h1>
+    <img src="~/img/Logo.jpg"></img>
 </div>
+
+<h5 class="text-center"><u>Buscar Videojuego</h5>
+<form method="post" class="text-center" action='@Url.Action("BuscarVidejuegos", "Home")'>
+<select class="form-control form-control-sm">
+  <option name="tipoBusqueda" value="">Nombre</option>
+  <option name="tipoBusqueda" value="">Categoria</option>
+  <option name="tipoBusqueda" value="">Clasificacion por edad</option>
+</select>
+<br>
+<input type="text" id="" name="username" placeholder="Ingrese aqui" required><br><br>  
+<input type="button" class="btn btn-primary" alt="Enviar" width=auto/>
+</form>
+
+<h5 class="text-center"><u>Buscar Empresa</h5>
+<form method="post" class="text-center" action='@Url.Action("BuscarEmpresas", "Home")'>
+<input type="text" id="username" name="username" placeholder="Ingrese aqui" required><br><br>  
+<input type="button" class="btn btn-primary" alt="Enviar" width=auto/>
+</form>

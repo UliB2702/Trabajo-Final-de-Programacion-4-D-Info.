@@ -2,13 +2,12 @@ using System.Collections.Generic;
 
 namespace TP_Final.Models;
 
-
-public class Categoria
+public class VideojuegoXCategoria
 {
     private int _idCategoria;
-    private string _nombre;
+    private int _idVideojuego;
 
-    public int IdClategoria
+    public int IdCategoria
     {
         get{
             return _idCategoria;
@@ -18,13 +17,13 @@ public class Categoria
         }
     }
 
-    public string Nombre
+    public int IdVideojuego
     {
         get{
-            return _nombre;
+            return _idVideojuego;
         }
         set{
-            _nombre = value;
+            _idVideojuego = value;
         }
     }
 }

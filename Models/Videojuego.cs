@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 namespace TP_Final.Models;
 
@@ -7,12 +8,12 @@ public class Videojuego
     private int _idVideojuego;
     private int _idEmpresa;
     private DateTime _fechaLanzamiento;
-    private int _idCategoria;
     private string _nombre;
     private string _descripcion;
     private string _logo;
     private string _caratula;
     private string _banner;
+    private int _idClasificacion;
 
     public int IdVideojuego
     {
@@ -42,15 +43,6 @@ public class Videojuego
         }
     }
 
-    public int IdCategoria
-    {
-        get{
-            return _idCategoria;
-        }
-        set{
-            _idCategoria = value;
-        }
-    }
     public string Nombre
     {
         get{
@@ -94,6 +86,16 @@ public class Videojuego
         }
         set{
             _banner = value;
+        }
+    }
+
+    public int IdClasificacion
+    {
+        get{
+            return _idClasificacion;
+        }
+        set{
+            _idClasificacion = value;
         }
     }
 

@@ -4,16 +4,16 @@ using System.Linq;
 using System.Data.SqlClient;
 using Dapper;
 
-namespace TPN07.Models;
+namespace TP_Final.Models;
 
 public class BD{
 
-private static string _connectionString = @"Server=A-PHZ2-CIDI-013;DataBase=AlmacenVideoJuegos;Trusted_Connection=True";
+private static string _connectionString = @"Server=A-PHZ2-AMI-003;DataBase=AlmacenVideoJuegos;Trusted_Connection=True";
 
 public static List<Videojuego> BuscarVideojuegosSegunNombre(string nombre){
     List<Videojuego> lista = new List<Videojuego>();
     using(SqlConnection db = new SqlConnection(_connectionString)){   
-        string sql = "SELECT * FROM Videojuego WHERE Nombre = %@vNombre%";
+        string sql = "SELECT * FROM Videojuego WHERE Nombre LIKE %@vNombre%";
         lista = db.Query<Videojuego>(sql, new{vNombre = nombre}).ToList();
     }
     return lista;

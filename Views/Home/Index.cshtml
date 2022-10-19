@@ -4,23 +4,17 @@
 
 <div class="text-center">
     <h1 class="display-4">Bienvenido a :</h1>
-    <img src="~/img/Logo.jpg"></img>
+    <img src="~/img/Logo.png"></img>
 </div>
 
 <h5 class="text-center"><u>Buscar Videojuego</h5>
-<form method="post" class="text-center" action='@Url.Action("BuscarVidejuegos", "Home")'>
-<select class="form-control form-control-sm">
-  <option name="tipoBusqueda" value="">Nombre</option>
-  <option name="tipoBusqueda" value="">Categoria</option>
-  <option name="tipoBusqueda" value="">Clasificacion por edad</option>
-</select>
-<br>
-<input type="text" id="" name="username" placeholder="Ingrese aqui" required><br><br>  
-<input type="button" class="btn btn-primary" alt="Enviar" width=auto/>
+<form method="post" class="text-center" action='@Url.Action("ResultsVideojuego", "Home")'>
+<input type="text" id="info" name="info" placeholder="Ingrese aqui" required><br><br>  
+<input type="submit" class="btn btn-primary" alt="Enviar" width=auto/>
 </form>
 
 <h5 class="text-center"><u>Buscar Empresa</h5>
-<form method="post" class="text-center" action='@Url.Action("BuscarEmpresas", "Home")'>
+<form method="post" class="text-center" action='@Url.Action("ResultsEmpresas", "Home")'>
 <input type="text" id="username" name="username" placeholder="Ingrese aqui" required><br><br>  
-<input type="button" class="btn btn-primary" alt="Enviar" width=auto/>
+<input type="submit" class="btn btn-primary" alt="Enviar" width=auto/>
 </form>

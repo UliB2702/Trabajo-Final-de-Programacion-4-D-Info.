@@ -18,6 +18,12 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult ResultsVideojuego(string info)
+    {
+        ViewBag.Videojuegos = BD.BuscarVideojuegosSegunNombre(info);
+        return View();
+    }
+
     public IActionResult Privacy()
     {
         return View();

@@ -53,7 +53,7 @@ public class Empresa
         }
     }
 
-    public string FechaFundacion
+    public DateTime FechaFundacion
     {
         get{
             return _fechaFundacion;

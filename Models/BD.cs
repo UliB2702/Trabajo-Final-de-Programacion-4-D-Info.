@@ -8,12 +8,12 @@ namespace TP_Final.Models;
 
 public class BD{
 
-private static string _connectionString = @"Server=A-PHZ2-AMI-003;DataBase=AlmacenVideoJuegos;Trusted_Connection=True";
+private static string _connectionString = @"Server=A-PHZ2-AMI-004;DataBase=AlmacenVideoJuegos;Trusted_Connection=True";
 
 public static List<Videojuego> BuscarVideojuegosSegunNombre(string nombre){
     List<Videojuego> lista = new List<Videojuego>();
-    using(SqlConnection db = new SqlConnection(_connectionString)){   
-        string sql = "SELECT * FROM Videojuego WHERE Nombre LIKE %@vNombre%";
+    using(SqlConnection db = new SqlConnection(_connectionString)){  
+        string sql = "SELECT * FROM Videojuego WHERE Nombre LIKE '%' + @vNombre + '%'";
         lista = db.Query<Videojuego>(sql, new{vNombre = nombre}).ToList();
     }
     return lista;
@@ -31,7 +31,7 @@ public static List<Videojuego> BuscarVideojuegosSegunClasificacion(string nombre
 public static List<Empresa> BuscarEmpresasSegunNombre(string nombre){
     List<Empresa> lista = new List<Empresa>();
     using(SqlConnection db = new SqlConnection(_connectionString)){   
-        string sql = "SELECT * FROM Empresa WHERE Nombre = %@vNombre%";
+        string sql = "SELECT * FROM Empresa WHERE Nombre LIKE '%' + @vNombre + '%'";
         lista = db.Query<Empresa>(sql, new{vNombre = nombre}).ToList();
     }
     return lista;

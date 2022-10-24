@@ -24,6 +24,12 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult ResultsEmpresa(string info2)
+    {
+        ViewBag.Empresas = BD.BuscarEmpresasSegunNombre(info2);
+        return View();
+    }
+
     public IActionResult Privacy()
     {
         return View();

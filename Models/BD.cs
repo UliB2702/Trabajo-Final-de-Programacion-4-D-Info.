@@ -37,5 +37,22 @@ public static List<Empresa> BuscarEmpresasSegunNombre(string nombre){
     return lista;
 }
 
+public static Empresa BuscarEmpresasSegunID(int id){
+    Empresa empresa = new Empresa();
+    string sql = "SELECT * FROM Empresa WHERE IdEmpresa = @eid";
+    using(SqlConnection db = new SqlConnection(_connectionString)){   
+        empresa = db.QueryFirstOrDefault<Empresa>(sql, new{eid = id});
+    }
+    return empresa;
+}
+
+public static Videojuego BuscarVideojuegoSegunID(int id){
+    Videojuego videojuego = new Videojuego();
+    string sql = "SELECT * FROM Videojuego WHERE IdVideojuego = @vid";
+    using(SqlConnection db = new SqlConnection(_connectionString)){   
+        videojuego = db.QueryFirstOrDefault<Videojuego>(sql, new{vid = id});
+    }
+    return videojuego;
+}
 
 }

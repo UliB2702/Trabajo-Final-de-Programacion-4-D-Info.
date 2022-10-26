@@ -2,14 +2,19 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h1 class="titulo">Resultado</h1>
+<h1 class="titulo">Resultados</h1>
+<br>
+<a href='@Url.Action("AgregarEmpresa","Home")' class="btn btn-primary"> + </a>
+
+<br> <br>
 
 @foreach (Empresa e in ViewBag.Empresas)
 {
-    <div class="card" style="width: 18rem;">
+    <div class="card cards" style="width: 18rem;">
         <img src="@e.Logo" class="card-img-top" alt="...">
         <div class="card-body">
             <p class="card-text">@e.Nombre</p>
+            <a href='@Url.Action("VerInfoEmpresa","Home", new{id = @e.IdEmpresa})' class="btn btn-primary">Ver más info.</a>
         </div>
     </div>
 }

@@ -2,14 +2,21 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h1 class="titulo">Resultado</h1>
+
+<h1 class="titulo">Resultados</h1>
+<br>
+<a href='@Url.Action("AgregarVideojuego","Home")' class="btn btn-primary"> + </a>
+
+<br> <br>
 
 @foreach (Videojuego v in ViewBag.Videojuegos)
 {
-    <div class="card" style="width: 18rem;">
-        <img src="@v.Caratula" class="card-img-top" alt="...">
+    <div class="card cards" style="width: 18rem;">
+        <img src="@v.Caratula" class="card-img-top resultadosV" alt="...">
         <div class="card-body">
             <p class="card-text">@v.Nombre</p>
+            <a href='@Url.Action("VerInfoVideojuego","Home", new{id = @v.IdVideojuego})' class="btn btn-primary">Ver más info.</a>
+            <input type="image" class="simbolo" src="~/img/eliminar.png" >
         </div>
     </div>
 }

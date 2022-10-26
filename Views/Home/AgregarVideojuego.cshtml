@@ -1,3 +1,16 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<h1 class="titulo">Rellena el formulario para agregar el videojuego:</h1>
+
+<form action='@Url.Action("GuardarVideojuego","Home")' method="post" enctype="multipart/form-data">
+Nombre del videojuego:<br/>
+<imput type="text" name="Nombre" id="" placeholder="Ingrese Nombre" size="30" maxlength="50"/><br/>
+Descripcion:<br/>
+<imput type="text" name="Descripción" id="" placeholder="Ingrese descripción" size="50" maxlength="500"/><br/>
+Fecha de lanzamiento:<br/>
+<input type="date" id="fechaLanzamiento" name="fechaLanzamiento"><br/>
+Caratula:<br/>
+<imput type="text" name="Caratula" placeholder="Ingrese URL" size="30" maxlength="200"/><br/>
+<input type="submit" value="Guardar Videojuego">
+</form>

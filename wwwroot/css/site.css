@@ -24,7 +24,21 @@ footer {
   right:0px;
 }
 
-.titulo h1{
+.titulo{
   text-align: center;
+  background-color: #FCB510;
+  
 }
 
+.simbolo{
+  width: 15%;
+  float: right;
+}
+
+.cards{
+  float: left;
+}
+
+.resultadosV{
+  width: 90%;
+}

@@ -18,6 +18,21 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult AgregarEmpresa()
+    {
+        return View();
+    }
+
+    public IActionResult AgregarVideojuego()
+    {
+        return View();
+    }
+
+    public IActionResult GuardarVideojuego()
+    {
+        return View("Index");
+    }
+
     public IActionResult ResultsVideojuego(string info)
     {
         ViewBag.Videojuegos = BD.BuscarVideojuegosSegunNombre(info);
@@ -27,6 +42,18 @@ public class HomeController : Controller
     public IActionResult ResultsEmpresa(string info2)
     {
         ViewBag.Empresas = BD.BuscarEmpresasSegunNombre(info2);
+        return View();
+    }
+
+    public IActionResult VerInfoVideojuego(int idVideojuego)
+    {
+        ViewBag.Videojuego = BD.BuscarVideojuegoSegunID(idVideojuego);
+        return View();
+    }
+
+    public IActionResult VerInfoEmpresa(int IdEmpresa)
+    {
+        ViewBag.Empresa = BD.BuscarEmpresasSegunID(IdEmpresa);
         return View();
     }
 

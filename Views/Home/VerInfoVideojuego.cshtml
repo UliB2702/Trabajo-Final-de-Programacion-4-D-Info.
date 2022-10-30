@@ -1,3 +1,11 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+
+<Div>
+    <img src="@ViewBag.Videojuego.Banner" width="100%" height="100%">
+    <img src="@ViewBag.Videojuego.Logo" class="display-4">
+    <p class="text-center"> @ViewBag.Videojuego.Nombre </p>
+    <p  class="text-center"> @ViewBag.Videojuego.Descripcion </p>
+    <p  class="text-center"> Fecha de lanzamiento: @ViewBag.Videojuego.FechaLanzamiento</p>
+</Div>

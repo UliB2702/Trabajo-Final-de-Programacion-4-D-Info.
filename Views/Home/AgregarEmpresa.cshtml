@@ -3,14 +3,16 @@
 }
 <h1 class="titulo">Rellena el formulario para agregar el videojuego:</h1>
 
-<form action='@Url.Action("GuardarVideojuego","Home")' method="post">
-Nombre del videojuego:<br/>
+<form action='@Url.Action("GuardarEmpresa","Home")' method="post">
+Nombre de la empresa:<br/>
 <imput type="text" name="Nombre" id="" placeholder="Ingrese Nombre" size="30" maxlength="50" ><br/>
-Descripcion:<br/>
-<imput type="text" name="Descripción" id="" placeholder="Ingrese descripción" size="50" maxlength="500"/><br/>
-Fecha de lanzamiento:<br/>
-<input type="date" id="fechaLanzamiento" name="fechaLanzamiento"><br/>
-Caratula:<br/>
-<imput type="text" name="Caratula" placeholder="Ingrese URL" size="30" maxlength="200" ><br/>
+Sede Central:<br/>
+<imput type="text" name="SedeCentral" id="" placeholder="Ingrese sede central" size="50" maxlength="500"/><br/>
+Fundador:<br/>
+<imput type="text" name="Fundador" id="" placeholder="Ingrese fundador/s" size="50" maxlength="500"/><br/>
+Fecha de fundación:<br/>
+<input type="date" id="fechaFundacion" name="fechaFundacion"><br/>
+Logo:<br/>
+<imput type="text" name="Logo" placeholder="Ingrese URL" size="30" maxlength="200" ><br/>
 <input type="submit" value="Guardar">
 </form>

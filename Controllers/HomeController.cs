@@ -25,12 +25,24 @@ public class HomeController : Controller
 
     public IActionResult AgregarVideojuego()
     {
+        ViewBag.Empresas = BD.BuscarEmpresas();
         return View();
     }
 
     public IActionResult GuardarVideojuego()
     {
         return View("Index");
+    }
+    public IActionResult GuardarEmpresa(string Nombre, string SedeCentral, string Fundador, DateTime fechaFundacion, string Logo)
+    {
+        BD.InsertarEmpresa(Nombre, SedeCentral, Fundador, fechaFundacion, Logo);
+        return RedirectToAction("Index");
+    }
+
+    public IActionResult EliminarVideojuego(int IdVideojuego)
+    {
+        BD.EliminarVideojuego(IdVideojuego);
+        return RedirectToAction("Index");
     }
 
     public IActionResult ResultsVideojuego(string info)

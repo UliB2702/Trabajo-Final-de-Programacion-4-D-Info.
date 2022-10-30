@@ -6,11 +6,22 @@
 <form action='@Url.Action("GuardarVideojuego","Home")' method="post">
 Nombre del videojuego:<br/>
 <imput type="text" name="Nombre" id="" placeholder="Ingrese Nombre" size="30" maxlength="50" ><br/>
+Empresa: <br/>
+<p>
+@foreach (Empresa e in ViewBag.Empresas)
+{
+    <input type="radio" name="empresa" value="@e.IdEmpresa" id="empresa" required > @e.Nombre
+}
+</p>
 Descripcion:<br/>
 <imput type="text" name="Descripción" id="" placeholder="Ingrese descripción" size="50" maxlength="500"/><br/>
 Fecha de lanzamiento:<br/>
 <input type="date" id="fechaLanzamiento" name="fechaLanzamiento"><br/>
 Caratula:<br/>
 <imput type="text" name="Caratula" placeholder="Ingrese URL" size="30" maxlength="200" ><br/>
+Banner:<br/>
+<imput type="text" name="Banner" placeholder="Ingrese URL" size="30" maxlength="200" ><br/>
+Logo:<br/>
+<imput type="text" name="Logo" placeholder="Ingrese URL" size="30" maxlength="200" ><br/>
 <input type="submit" value="Guardar">
 </form>

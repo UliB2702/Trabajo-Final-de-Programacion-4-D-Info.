@@ -36,7 +36,22 @@ public static List<Empresa> BuscarEmpresasSegunNombre(string nombre){
     }
     return lista;
 }
+public static List<Empresa> BuscarEmpresas(){
+    List<Empresa> lista = new List<Empresa>();
+    using(SqlConnection db = new SqlConnection(_connectionString)){   
+        string sql = "SELECT * FROM Empresa";
+        lista = db.Query<Empresa>(sql).ToList();
+    }
+    return lista;
+}
 
+public static void InsertarEmpresa(string Nombre, string SedeCentral, string Fundador, DateTime fechaFundacion, string Logo)
+{
+    string sql = "INSERT INTO Empresa VALUES (@vNombre, @vSedeCentral, @vFundador, @vfechaFundacion, @vLogo)";
+    using(SqlConnection db = new SqlConnection(_connectionString)){
+        db.Execute(sql, new { vNombre=Nombre ,vSedeCentral = SedeCentral, vFundador = Fundador, vfechaFundacion = fechaFundacion, vLogo = Logo});
+    }
+}
 public static Empresa BuscarEmpresasSegunID(int id){
     Empresa empresa = new Empresa();
     string sql = "SELECT * FROM Empresa WHERE IdEmpresa = @eid";
@@ -53,6 +68,15 @@ public static Videojuego BuscarVideojuegoSegunID(int id){
         videojuego = db.QueryFirstOrDefault<Videojuego>(sql, new{vid = id});
     }
     return videojuego;
+}
+
+public static void EliminarVideojuego (int id)
+{
+    string sql = "DELETE FROM Videojuego WHERE IdVideojuego = @vid";
+     using(SqlConnection db = new SqlConnection(_connectionString)){
+        db.Execute(sql, new {vid = id});
+    }
+
 }
 
 }

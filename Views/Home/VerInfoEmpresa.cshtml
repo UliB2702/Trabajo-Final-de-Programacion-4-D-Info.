@@ -1,3 +1,10 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<Div>
+    <img class="display-4" src="@ViewBag.Empresa.Logo">
+    <p class="text-center"> @ViewBag.Empresa.Nombre </p>
+    <p class="text-center"> Sede central: @ViewBag.Empresa.SedeCentral </p>
+    <p class="text-center"> Fundador/es: @ViewBag.Empresa.Fundador </p>
+    <p class="text-center"> Fecha de fundación: @ViewBag.Empresa.FechaFundacion </p>
+</Div>

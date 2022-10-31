@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics;
+using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using TP_Final.Models;
 
@@ -26,22 +28,31 @@ public class HomeController : Controller
     public IActionResult AgregarVideojuego()
     {
         ViewBag.Empresas = BD.BuscarEmpresas();
+        ViewBag.Categorias = BD.BuscarCategorias();
+        ViewBag.Clasificaciones = BD.BuscarClasificacion();
         return View();
     }
 
-    public IActionResult GuardarVideojuego()
+    [HttpPost]
+    public IActionResult GuardarVideojuego(string Nombre, int empresa ,List<int> categoria, int clasificacion ,string Descripción, DateTime fechaLanzamiento, string Caratula, string Banner, string Logo)
     {
+        Console.WriteLine(categoria[1]);
+        BD.InsertarVideojuego(empresa, fechaLanzamiento, Nombre, Descripción, clasificacion, Caratula, Banner,Logo);
+        Videojuego id = BD.BuscarUltimoRegistro();
+        BD.InsertarCategorias(categoria, id.IdVideojuego);
         return View("Index");
     }
+
+    [HttpPost]
     public IActionResult GuardarEmpresa(string Nombre, string SedeCentral, string Fundador, DateTime fechaFundacion, string Logo)
     {
         BD.InsertarEmpresa(Nombre, SedeCentral, Fundador, fechaFundacion, Logo);
         return RedirectToAction("Index");
     }
 
-    public IActionResult EliminarVideojuego(int IdVideojuego)
+    public IActionResult EliminarVideojuego(int id)
     {
-        BD.EliminarVideojuego(IdVideojuego);
+        BD.EliminarVideojuego(id);
         return RedirectToAction("Index");
     }
 
@@ -57,9 +68,9 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult VerInfoVideojuego(int idVideojuego)
+    public IActionResult VerInfoVideojuego(int id)
     {
-        ViewBag.Videojuego = BD.BuscarVideojuegoSegunID(idVideojuego);
+        ViewBag.Videojuego = BD.BuscarVideojuegoSegunID(id);
         return View();
     }
 

@@ -1,6 +1,7 @@
 using TP_Final.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using System.Data.SqlClient;
 using Dapper;
 
@@ -28,6 +29,24 @@ public static List<Videojuego> BuscarVideojuegosSegunClasificacion(string nombre
     return lista;
 }
 
+public static List<Clasificacion> BuscarClasificacion(){
+    List<Clasificacion> lista = new List<Clasificacion>();
+    using(SqlConnection db = new SqlConnection(_connectionString)){   
+        string sql = "SELECT * FROM Clasificacion";
+        lista = db.Query<Clasificacion>(sql).ToList();
+    }
+    return lista;
+}
+
+public static List<Categoria> BuscarCategorias(){
+    List<Categoria> lista = new List<Categoria>();
+    using(SqlConnection db = new SqlConnection(_connectionString)){  
+        string sql = "SELECT * FROM Categoria";
+        lista = db.Query<Categoria>(sql).ToList();
+    }
+    return lista;
+}
+
 public static List<Empresa> BuscarEmpresasSegunNombre(string nombre){
     List<Empresa> lista = new List<Empresa>();
     using(SqlConnection db = new SqlConnection(_connectionString)){   
@@ -43,6 +62,35 @@ public static List<Empresa> BuscarEmpresas(){
         lista = db.Query<Empresa>(sql).ToList();
     }
     return lista;
+}
+public static void InsertarVideojuego(int empresa, DateTime fechaLanzamiento, string nombre, string descripcion, int clasificacion, string caratula, string banner,string Logo)
+{
+    string sql = "INSERT INTO Videojuego VALUES (@vEmpresa, @vFechaLanzamiento, @vNombre, @vDescripcion, @vClasificacion, @vCaratula, @vBanner ,@vLogo)";
+    using(SqlConnection db = new SqlConnection(_connectionString)){
+        db.Execute(sql, new {vEmpresa=empresa, vFechaLanzamiento=fechaLanzamiento ,vNombre=nombre ,vDescripcion = descripcion, vClasificacion= clasificacion, vCaratula = caratula, vBanner = banner, vLogo = Logo});
+    }
+}
+public static Videojuego BuscarUltimoRegistro()
+{    
+    Videojuego lista = new Videojuego();
+    string sql = "SELECT TOP 1 * From Videojuego ORDER BY IdVideojuego desc";
+    using(SqlConnection db = new SqlConnection(_connectionString)){
+       lista = db.QueryFirstOrDefault<Videojuego>(sql);
+    }
+    return lista;
+}
+
+public static void InsertarCategorias(List<int> categorias, int id)
+{
+    using(SqlConnection db = new SqlConnection(_connectionString)){
+        foreach(int c in categorias)
+        {
+            Console.WriteLine(c);
+            string sql = "INSERT INTO VideojuegoXCategoria VALUES (@vc, @vid)";
+            db.Execute(sql, new{vc = c, vid = id});
+        }
+    }
+
 }
 
 public static void InsertarEmpresa(string Nombre, string SedeCentral, string Fundador, DateTime fechaFundacion, string Logo)
@@ -63,7 +111,7 @@ public static Empresa BuscarEmpresasSegunID(int id){
 
 public static Videojuego BuscarVideojuegoSegunID(int id){
     Videojuego videojuego = new Videojuego();
-    string sql = "SELECT * FROM Videojuego WHERE IdVideojuego = @vid";
+    string sql = "SELECT * FROM Videojuego v INNER JOIN Clasificacion c ON v.IdClasificacion = c.IdClasificacion WHERE IdVideojuego = @vid ";
     using(SqlConnection db = new SqlConnection(_connectionString)){   
         videojuego = db.QueryFirstOrDefault<Videojuego>(sql, new{vid = id});
     }

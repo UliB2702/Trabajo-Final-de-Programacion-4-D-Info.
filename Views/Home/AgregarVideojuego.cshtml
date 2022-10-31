@@ -4,24 +4,34 @@
 <h1 class="titulo">Rellena el formulario para agregar el videojuego:</h1>
 
 <form action='@Url.Action("GuardarVideojuego","Home")' method="post">
-Nombre del videojuego:<br/>
-<imput type="text" name="Nombre" id="" placeholder="Ingrese Nombre" size="30" maxlength="50" ><br/>
-Empresa: <br/>
-<p>
+Nombre del videojuego:<br>
+<input type="text" name="Nombre" id="Nombre" placeholder="Ingrese Nombre" size="30" maxlength="50" required><br>
+Empresa: <br>
 @foreach (Empresa e in ViewBag.Empresas)
 {
-    <input type="radio" name="empresa" value="@e.IdEmpresa" id="empresa" required > @e.Nombre
+    <input type="radio" name="empresa" value="@e.IdEmpresa" id="empresa" required > @e.Nombre <br>
 }
-</p>
-Descripcion:<br/>
-<imput type="text" name="Descripción" id="" placeholder="Ingrese descripción" size="50" maxlength="500"/><br/>
-Fecha de lanzamiento:<br/>
-<input type="date" id="fechaLanzamiento" name="fechaLanzamiento"><br/>
-Caratula:<br/>
-<imput type="text" name="Caratula" placeholder="Ingrese URL" size="30" maxlength="200" ><br/>
-Banner:<br/>
-<imput type="text" name="Banner" placeholder="Ingrese URL" size="30" maxlength="200" ><br/>
-Logo:<br/>
-<imput type="text" name="Logo" placeholder="Ingrese URL" size="30" maxlength="200" ><br/>
+<br>
+Categorias: <br>
+@foreach (Categoria c in ViewBag.Categorias)
+{
+    <input type="checkbox" name="categoria" value="@c.IdCategoria"> @c.Nombre <br>
+}
+Clasificacion: <br>
+@foreach (Clasificacion cl in ViewBag.Clasificaciones)
+{
+    <input type="radio" name="clasificacion" value="@cl.IdClasificacion" id="clasificacion" required > @cl.Nombre <br>
+}
+<br>
+Descripcion:<br>
+<input type="text" name="Descripción" id="Descripción" placeholder="Ingrese descripción" size="50" maxlength="500" required/><br>
+Fecha de lanzamiento:<br>
+<input type="date" id="fechaLanzamiento" name="fechaLanzamiento" required><br>
+Caratula:<br>
+<input type="text" name="Caratula" id="Caratula" placeholder="Ingrese URL" size="30" maxlength="200" required><br>
+Banner:<br>
+<input type="text" name="Banner" id="Banner" placeholder="Ingrese URL" size="30" maxlength="200" required><br>
+Logo:<br>
+<input type="text" name="Logo" id="Logo" placeholder="Ingrese URL" size="30" maxlength="200" required><br>
 <input type="submit" value="Guardar">
 </form>

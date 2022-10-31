@@ -8,7 +8,7 @@ public class Categoria
     private int _idCategoria;
     private string _nombre;
 
-    public int IdClategoria
+    public int IdCategoria
     {
         get{
             return _idCategoria;

@@ -50,10 +50,12 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
 
-    public IActionResult EliminarVideojuego(int id)
+    public IActionResult EliminarVideojuego(int id2)
     {
-        BD.EliminarVideojuego(id);
-        return RedirectToAction("Index");
+        Console.WriteLine(id2);
+        BD.EliminarVideojuegoDeVXC(id2);
+        BD.EliminarVideojuegoSegunId(id2);
+        return View("Index");
     }
 
     public IActionResult ResultsVideojuego(string info)
@@ -71,12 +73,17 @@ public class HomeController : Controller
     public IActionResult VerInfoVideojuego(int id)
     {
         ViewBag.Videojuego = BD.BuscarVideojuegoSegunID(id);
+        ViewBag.Empresa = BD.BuscarEmpresasSegunID(ViewBag.Videojuego.IdEmpresa);
+        ViewBag.Clasificacion = BD.BuscarClasificacionSegunID(ViewBag.Videojuego.IdClasificacion);
+        List<int> ids = BD.BuscarCategoriaXVideojuego(id);
+        ViewBag.Categorias = BD.BuscarCategoriaPorIdVideojuego(ids);
+
         return View();
     }
 
-    public IActionResult VerInfoEmpresa(int IdEmpresa)
+    public IActionResult VerInfoEmpresa(int id2)
     {
-        ViewBag.Empresa = BD.BuscarEmpresasSegunID(IdEmpresa);
+        ViewBag.Empresa = BD.BuscarEmpresasSegunID(id2);
         return View();
     }
 

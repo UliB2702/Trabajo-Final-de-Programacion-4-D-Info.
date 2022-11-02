@@ -16,7 +16,7 @@
         <div class="card-body">
             <p class="card-text">@v.Nombre</p>
             <a href='@Url.Action("VerInfoVideojuego","Home", new{id = @v.IdVideojuego})' class="btn btn-primary">Ver más info.</a>
-            <input type="image" class="simbolo" src="~/img/eliminar.png" href='@Url.Action("EliminarVideojuego", new { id = @v.IdVideojuego})'>
+            <a type="image" href='@Url.Action("EliminarVideojuego","Home", new {id2 = @v.IdVideojuego})'class="btn btn-danger"> Eliminar </a>
         </div>
     </div>
 }

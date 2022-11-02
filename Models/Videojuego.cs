@@ -9,7 +9,7 @@ public class Videojuego
     private int _idEmpresa;
     private DateTime _fechaLanzamiento;
     private string _nombre;
-    private string _descripcion;
+    private string _descripción;
     private string _logo;
     private string _caratula;
     private string _banner;
@@ -52,13 +52,13 @@ public class Videojuego
             _nombre = value;
         }
     }
-    public string Descripcion
+    public string Descripción
     {
         get{
-            return _descripcion;
+            return _descripción;
         }
         set{
-            _descripcion = value;
+            _descripción = value;
         }
     }
     public string Logo

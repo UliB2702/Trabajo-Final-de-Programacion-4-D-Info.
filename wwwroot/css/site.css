@@ -39,6 +39,17 @@ footer {
   float: left;
 }
 
+.eliminar{
+  float: right;
+}
+
 .resultadosV{
   width: 90%;
+}
+
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
 }

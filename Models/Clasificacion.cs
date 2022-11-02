@@ -6,7 +6,7 @@ public class Clasificacion
 {
     private int _idClasificacion;
     private string _nombre;
-    private string _logo;
+    private string _logotipo;
 
     public int IdClasificacion
     {
@@ -28,13 +28,13 @@ public class Clasificacion
         }
     }
 
-    public string Logo
+    public string Logotipo
     {
         get{
-            return _logo;
+            return _logotipo;
         }
         set{
-            _logo = value;
+            _logotipo = value;
         }
     }
 }

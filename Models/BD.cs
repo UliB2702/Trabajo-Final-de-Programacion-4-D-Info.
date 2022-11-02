@@ -111,20 +111,61 @@ public static Empresa BuscarEmpresasSegunID(int id){
 
 public static Videojuego BuscarVideojuegoSegunID(int id){
     Videojuego videojuego = new Videojuego();
-    string sql = "SELECT * FROM Videojuego v INNER JOIN Clasificacion c ON v.IdClasificacion = c.IdClasificacion WHERE IdVideojuego = @vid ";
+    string sql = "SELECT * FROM Videojuego v WHERE IdVideojuego = @vid ";
     using(SqlConnection db = new SqlConnection(_connectionString)){   
         videojuego = db.QueryFirstOrDefault<Videojuego>(sql, new{vid = id});
     }
     return videojuego;
 }
 
-public static void EliminarVideojuego (int id)
+public static Clasificacion BuscarClasificacionSegunID(int id)
+{
+    Clasificacion clasificacion = new Clasificacion();
+    string sql = "SELECT * FROM Clasificacion Where IdClasificacion = @cid";
+    using(SqlConnection db = new SqlConnection(_connectionString)){
+        clasificacion = db.QueryFirstOrDefault<Clasificacion>(sql, new{cid = id});
+    }
+    return clasificacion;
+}
+
+public static void EliminarVideojuegoSegunId(int id)
 {
     string sql = "DELETE FROM Videojuego WHERE IdVideojuego = @vid";
      using(SqlConnection db = new SqlConnection(_connectionString)){
         db.Execute(sql, new {vid = id});
     }
 
+}
+
+public static void EliminarVideojuegoDeVXC(int id)
+{
+    string sql = "DELETE FROM VideojuegoXCategoria WHERE IdVideojuego = @vid";
+     using(SqlConnection db = new SqlConnection(_connectionString)){
+        db.Execute(sql, new {vid = id});
+    }
+}
+
+public static List<int> BuscarCategoriaXVideojuego(int id)
+{
+    List<int> ids = new List<int>();
+    string sql = "SELECT IdCategoria FROM VideojuegoXCategoria WHERE IdVideojuego = @vid";
+    using(SqlConnection db = new SqlConnection(_connectionString)){
+        ids = db.Query<int>(sql, new {vid = id}).ToList();
+    }
+    return ids;
+}
+
+public static List<Categoria> BuscarCategoriaPorIdVideojuego(List<int> ids){
+    List<Categoria> categorias = new List<Categoria>();
+    using(SqlConnection db = new SqlConnection(_connectionString)){
+        foreach(int i in ids)
+        {
+            string sql = "SELECT * FROM Categoria WHERE IdCategoria = @vi";
+            categorias.AddRange(db.Query<Categoria>(sql, new{vi = i}).ToList());
+        }
+    }
+
+    return categorias;
 }
 
 }
